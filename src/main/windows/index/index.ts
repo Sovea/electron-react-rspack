@@ -1,5 +1,6 @@
-import { BrowserWindow } from 'electron';
-import { getAppBundleUrl } from '@/common/utils/window';
+import path from 'node:path';
+import { app, BrowserWindow } from 'electron';
+import { getAppPageUrl } from '@/common/utils/window';
 
 export const create = () => {
   const win = new BrowserWindow({
@@ -8,8 +9,9 @@ export const create = () => {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      preload: path.join(app.getAppPath(), 'dist/preload/index.js'),
     },
   });
 
-  win.loadURL(getAppBundleUrl('index.html'));
+  win.loadURL(getAppPageUrl('index.html'));
 };

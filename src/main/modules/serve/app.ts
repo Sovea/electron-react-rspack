@@ -13,7 +13,7 @@ export function startStaticServe(
   successCb?: () => void,
   errorCb?: (err: Error) => void,
 ) {
-  const serve = serveStatic(path.join(app.getAppPath(), 'renderer'));
+  const serve = serveStatic(path.join(app.getAppPath(), 'dist'));
 
   const server = http.createServer(function onRequest(req, res) {
     serve(req, res, finalhandler(req, res));

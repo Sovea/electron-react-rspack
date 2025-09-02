@@ -1,6 +1,7 @@
 import { DEV_PORT } from 'configs/rspack/constant';
 import { net, protocol } from 'electron';
 import { getPort } from '@/common/utils/app';
+import type { AppSchemaHost } from '@/types/window';
 
 /**
  * Handle requests to the 'app' scheme
@@ -8,10 +9,10 @@ import { getPort } from '@/common/utils/app';
 export function handleAppSchema() {
   protocol.handle('app', (request) => {
     const { host, pathname } = new URL(request.url);
-    switch (host) {
-      case 'bundle': {
+    switch (host as AppSchemaHost) {
+      case 'page': {
         return net.fetch(
-          `http://localhost:${isDev ? DEV_PORT : getPort()}${pathname}`,
+          `http://localhost:${isDev ? DEV_PORT : getPort()}/renderer${pathname}`,
         );
       }
       default: {
