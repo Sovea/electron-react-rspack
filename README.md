@@ -1,6 +1,6 @@
-# Electron React Rspack TypeScript Template
+# Electron React Rspack TypeScript Boilerplate
 
-Pure template for developing electron app.
+A **modern**, **unopinionated**, **pure** boilerplate for developing electron app.
 
  - **[React](https://react.dev/)** and **[TypeScript](https://www.typescriptlang.org/)** for development
  - **[biome](https://biomejs.dev/)** for lint and format
