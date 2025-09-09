@@ -12,7 +12,7 @@ export function handleAppSchema() {
     switch (host as AppSchemaHost) {
       case 'page': {
         return net.fetch(
-          `http://localhost:${isDev ? DEV_PORT : getPort()}/renderer${pathname}`,
+          `http://localhost:${isDev ? DEV_PORT : getPort()}${isDev ? '' : '/renderer'}${pathname}`,
         );
       }
       default: {
